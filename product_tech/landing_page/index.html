@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrightCHAMPS USA | Next-Gen AI & Coding 1-on-1 Trial Class</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <aside class="announcement-bar" aria-label="Holiday campaign announcement">
+        <div class="announcement-content">
+            <span class="badge-pill">Q4 HOLIDAY SPECIAL</span>
+            <span id="announcement-text">Winter Coding Headstart: Complimentary 1-on-1 AI Trial Class + $150 Tuition Grant</span>
+            <a href="/hub" style="color: #FCD34D; font-weight: 700; text-decoration: underline; margin-left: 12px;">📊 Open Founder's Strategy Hub & Simulator →</a>
+        </div>
+    </aside>
+
+    <!-- Header Navigation -->
+    <header class="site-header">
+        <div class="nav-container">
+            <div class="brand-logo">
+                <span class="logo-bold">Bright</span><span class="logo-accent">CHAMPS</span>
+                <span class="country-tag">USA 🇺🇸</span>
+            </div>
+            <div class="nav-trust">
+                <span class="trust-stars">★★★★★</span>
+                <span class="trust-text">4.9/5 Rating by 30,000+ US Parents</span>
+                <a href="/hub" style="background: #1E1B4B; color: #FFFFFF; font-size: 0.8rem; font-weight: 700; padding: 6px 14px; border-radius: 6px; text-decoration: none; margin-left: 16px;">Founder's Hub & Simulator →</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="hero-section">
+        <div class="hero-container">
+            
+            <!-- Left Column: Dynamic Value Proposition & Geo-Social Proof -->
+            <div class="hero-left">
+                <div class="geo-badge" id="geo-indicator">
+                    <span class="pulse-dot"></span>
+                    <span id="geo-badge-text">Personalized for Silicon Valley & Tech Metro Families</span>
+                </div>
+
+                <h1 class="hero-title" id="hero-headline">
+                    Turn Passive Screen Time Into <span class="gradient-text">Real AI & Coding Superpowers.</span>
+                </h1>
+
+                <p class="hero-subtitle" id="hero-subtext">
+                    Watch your 6–16 year old build playable games, Python algorithms, and autonomous AI projects with world-class 1-on-1 mentors.
+                </p>
+
+                <!-- Value Proposition Highlights -->
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">💻</div>
+                        <div class="feature-text">
+                            <strong>Beyond Drag-and-Drop:</strong> Real Python, GenAI & Algorithmic Problem Solving.
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-text">
+                            <strong>True 1-on-1 Mentorship:</strong> 100% personalized attention; zero shared Zoom screens.
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🚀</div>
+                        <div class="feature-text">
+                            <strong>Working Project in 45 Mins:</strong> Every trial class completes a live, working project.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Social Proof & Trust Badges -->
+                <div class="trust-panel">
+                    <div class="parent-quotes" id="social-proof-quote">
+                        <p class="quote-body">"My 10-year-old was obsessed with Roblox. Within 3 weeks of BrightCHAMPS, he was writing real Python scripts to build his own mini-games. Worth every single penny."</p>
+                        <div class="quote-author">
+                            <strong>— Anita S., Software Engineering Lead</strong> • Sunnyvale, CA
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: The 2-Step Interactive Intake & Booking Funnel -->
+            <div class="hero-right">
+                <div class="funnel-card">
+                    
+                    <!-- Progress Indicator -->
+                    <div class="funnel-progress">
+                        <div class="progress-step active" id="step-tab-1">
+                            <span class="step-num">1</span>
+                            <span class="step-name">Child Profile</span>
+                        </div>
+                        <div class="progress-connector" id="connector-1"></div>
+                        <div class="progress-step" id="step-tab-2">
+                            <span class="step-num">2</span>
+                            <span class="step-name">Verification</span>
+                        </div>
+                        <div class="progress-connector" id="connector-2"></div>
+                        <div class="progress-step" id="step-tab-3">
+                            <span class="step-num">3</span>
+                            <span class="step-name">Lock Slot</span>
+                        </div>
+                    </div>
+
+                    <!-- STEP 1: Child Skill & Interest Assessment (Low Friction) -->
+                    <div class="funnel-step-content" id="step-1-content">
+                        <h2 class="step-heading">Customize Your Child's Learning Path</h2>
+                        <p class="step-subheading">Takes 30 seconds • We match the exact mentor for your child's age</p>
+
+                        <div class="form-group">
+                            <label for="child-name">Child's First Name</label>
+                            <input type="text" id="child-name" placeholder="e.g. Aarav, Lucas, Maya" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <label for="child-age">Child's Age</label>
+                                <select id="child-age" required>
+                                    <option value="">Select Age</option>
+                                    <option value="6">6 Years Old</option>
+                                    <option value="7">7 Years Old</option>
+                                    <option value="8">8 Years Old</option>
+                                    <option value="9">9 Years Old</option>
+                                    <option value="10" selected>10 Years Old</option>
+                                    <option value="11">11 Years Old</option>
+                                    <option value="12">12 Years Old</option>
+                                    <option value="13">13 Years Old</option>
+                                    <option value="14">14 Years Old</option>
+                                    <option value="15">15 Years Old</option>
+                                    <option value="16">16 Years Old</option>
+                                </select>
+                            </div>
+                            <div class="form-group half">
+                                <label for="has-laptop-access">Laptop/Desktop Access?</label>
+                                <select id="has-laptop-access" required>
+                                    <option value="YES" selected>Yes, Laptop or PC (Recommended)</option>
+                                    <option value="NO">No, Tablet/iPad Only</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="coding-experience">Current Coding Experience</label>
+                            <select id="coding-experience" required>
+                                <option value="BEGINNER">Total Beginner (No prior coding)</option>
+                                <option value="BLOCK" selected>Played with Scratch / Block Coding</option>
+                                <option value="TEXT">Some Python / JavaScript knowledge</option>
+                                <option value="ROBLOX">Builds mods in Roblox or Minecraft</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="learning-goal">Primary Goal for Child</label>
+                            <select id="learning-goal" required>
+                                <option value="AI_CODING" selected>Learn Artificial Intelligence & Python</option>
+                                <option value="GAME_DEV">Build Playable Video Games</option>
+                                <option value="LOGIC_MATH">Sharpen Logic & Academic Math Edge</option>
+                                <option value="CREATIVE">Creative Confidence & Problem Solving</option>
+                            </select>
+                        </div>
+
+                        <!-- Dynamic Recommendation Box -->
+                        <div class="recommendation-badge" id="curriculum-preview">
+                            <span class="preview-tag">MATCHED CURRICULUM</span>
+                            <div class="preview-title" id="matched-track-title">Next-Gen AI & Python Creator Track</div>
+                            <div class="preview-desc" id="matched-track-desc">Hands-on interactive projects: Voice Assistant + 2D Game in Python.</div>
+                        </div>
+
+                        <button type="button" class="btn-primary" id="btn-next-step-1">
+                            Continue: Match Mentor & Claim Free Class →
+                        </button>
+                    </div>
+
+                    <!-- STEP 2: Parent Verification, Phone OTP & TCPA Gate -->
+                    <div class="funnel-step-content hidden" id="step-2-content">
+                        <h2 class="step-heading">Where Should We Send the Class Pass?</h2>
+                        <p class="step-subheading">Free 45-minute 1-on-1 trial class + $150 tuition voucher</p>
+
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <label for="parent-fname">Parent First Name</label>
+                                <input type="text" id="parent-fname" placeholder="First Name" required>
+                            </div>
+                            <div class="form-group half">
+                                <label for="parent-lname">Parent Last Name</label>
+                                <input type="text" id="parent-lname" placeholder="Last Name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parent-email">Parent Email Address</label>
+                            <input type="email" id="parent-email" placeholder="name@company.com or personal" required>
+                            <span class="input-hint" id="email-hint">Used to send the Zoom meeting link and curriculum report.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parent-phone">US Mobile Number (For Live Class Reminders)</label>
+                            <div class="phone-input-wrap">
+                                <span class="phone-prefix">+1</span>
+                                <input type="tel" id="parent-phone" placeholder="(408) 555-0192" required>
+                                <button type="button" class="btn-send-otp" id="btn-send-otp">Send Code</button>
+                            </div>
+                        </div>
+
+                        <!-- SMS OTP Verification Container -->
+                        <div class="otp-verification-box hidden" id="otp-container">
+                            <div class="otp-header">
+                                <span class="otp-icon">📱</span>
+                                <label for="otp-input" class="otp-label">Enter 6-Digit SMS Verification Code</label>
+                            </div>
+                            <div class="otp-row">
+                                <input type="text" id="otp-input" class="otp-code-input" placeholder="123456" maxlength="6">
+                                <button type="button" class="btn-verify-otp" id="btn-verify-otp">Verify</button>
+                            </div>
+                            <div class="otp-status-text" id="otp-status-msg">
+                                Sandbox Mode: Verification code is <strong>123456</strong>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <label for="parent-state">US State</label>
+                                <select id="parent-state" required>
+                                    <option value="CA" selected>California (CA)</option>
+                                    <option value="WA">Washington (WA)</option>
+                                    <option value="TX">Texas (TX)</option>
+                                    <option value="NY">New York (NY)</option>
+                                    <option value="NJ">New Jersey (NJ)</option>
+                                    <option value="MA">Massachusetts (MA)</option>
+                                    <option value="VA">Virginia (VA)</option>
+                                    <option value="IL">Illinois (IL)</option>
+                                    <option value="GA">Georgia (GA)</option>
+                                    <option value="NC">North Carolina (NC)</option>
+                                    <option value="OTHER">Other US State</option>
+                                </select>
+                            </div>
+                            <div class="form-group half">
+                                <label for="parent-zip">Zip Code</label>
+                                <input type="text" id="parent-zip" placeholder="e.g. 94087" maxlength="5" required>
+                            </div>
+                        </div>
+
+                        <!-- TCPA Compliance Consent Checkbox -->
+                        <div class="form-group tcpa-box">
+                            <label class="tcpa-label">
+                                <input type="checkbox" id="tcpa-consent" required checked>
+                                <span class="tcpa-text">
+                                    I expressly consent to receive informational and demo reminder calls, text messages (SMS), and WhatsApp alerts from BrightCHAMPS at the mobile number provided above. Consent is not a condition of purchase. Msg & data rates may apply.
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="step-btn-group">
+                            <button type="button" class="btn-secondary" id="btn-back-step-2">← Back</button>
+                            <button type="button" class="btn-primary" id="btn-submit-lead">Claim Free Trial & Select Slot →</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Instant Calendar Slot Locking & Attendance Assurance -->
+                    <div class="funnel-step-content hidden" id="step-3-content">
+                        <div class="success-banner">
+                            <span class="check-icon">✓</span>
+                            <h2 class="step-heading" id="confirmation-header">Class Pass Confirmed for Aarav!</h2>
+                            <p class="step-subheading">Lock your live 1-on-1 demo slot now before counselor schedules fill up:</p>
+                        </div>
+
+                        <div class="slot-picker-wrap">
+                            <label class="slot-label">Select Preferred 45-Min Trial Slot:</label>
+                            <div class="slot-grid" id="slots-container">
+                                <!-- Dynamically generated slots -->
+                            </div>
+                        </div>
+
+                        <div class="locked-card hidden" id="locked-slot-card">
+                            <div class="locked-badge">SLOT RESERVED & SYNCED</div>
+                            <div class="locked-details" id="locked-details-text">
+                                Tomorrow, 5:00 PM PST with Senior Mentor
+                            </div>
+                            <div class="calendar-actions">
+                                <a href="#" target="_blank" class="btn-gcal" id="btn-gcal-link">
+                                    📅 Add to Google Calendar (1-Click)
+                                </a>
+                                <a href="#" download="brightchamps-trial.ics" class="btn-ics" id="btn-ics-link">
+                                    🍏 Add to Apple / Outlook Calendar
+                                </a>
+                            </div>
+
+                            <!-- Attendance Assurance & Multi-Channel Reminder Cadence -->
+                            <div class="reminder-cadence-section">
+                                <h3 class="cadence-title">🔔 Attendance Assurance & Reminders</h3>
+                                <div class="cadence-grid">
+                                    <div class="cadence-card">
+                                        <div class="cadence-pill">T-24 Hours</div>
+                                        <div class="cadence-channel">📧 Email</div>
+                                        <div class="cadence-text">Calendar invite + Student Prep Guide</div>
+                                    </div>
+                                    <div class="cadence-card">
+                                        <div class="cadence-pill">T-2 Hours</div>
+                                        <div class="cadence-channel">📱 SMS</div>
+                                        <div class="cadence-text">1-Click Zoom access + Mentor bio</div>
+                                    </div>
+                                    <div class="cadence-card">
+                                        <div class="cadence-pill">T-15 Mins</div>
+                                        <div class="cadence-channel">💬 WhatsApp</div>
+                                        <div class="cadence-text">Live room open alert & check-in</div>
+                                    </div>
+                                </div>
+                                <div class="reschedule-action">
+                                    <button type="button" class="btn-reschedule" id="btn-reschedule">
+                                        ↺ Need a different time? Change trial slot
+                                    </button>
+                                </div>
+                            </div>
+
+                            <p class="zoom-notice">
+                                Zoom link has been sent to your verified phone and email. Please join 5 mins early using a laptop.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Trust Strip -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="trust-stat">
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Countries Globally</span>
+            </div>
+            <div class="trust-stat">
+                <span class="stat-number">100,000+</span>
+                <span class="stat-label">Classes Delivered</span>
+            </div>
+            <div class="trust-stat">
+                <span class="stat-number">1-on-1</span>
+                <span class="stat-label">Live Dedicated Mentors</span>
+            </div>
+            <div class="trust-stat">
+                <span class="stat-number">Top 1%</span>
+                <span class="stat-label">Vetted STEM Educators</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Prototype Logic & Dynamic Customizer -->
+    <script src="app.js"></script>
+</body>
+</html>

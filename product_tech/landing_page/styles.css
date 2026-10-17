@@ -1,0 +1,776 @@
+/* BrightCHAMPS USA Q4 Landing Page Styling */
+:root {
+    --primary: #4F46E5;
+    --primary-hover: #4338CA;
+    --primary-light: #EEF2FF;
+    --accent: #F59E0B;
+    --accent-green: #10B981;
+    --text-dark: #0F172A;
+    --text-muted: #64748B;
+    --border-color: #E2E8F0;
+    --bg-light: #F8FAFC;
+    --card-bg: #FFFFFF;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Announcement Top Bar */
+.announcement-bar {
+    background: linear-gradient(90deg, #1E1B4B 0%, #312E81 100%);
+    color: #FFFFFF;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.announcement-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.badge-pill {
+    background-color: var(--accent);
+    color: #000000;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+}
+
+/* Header */
+.site-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 24px;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.logo-bold {
+    color: #1E1B4B;
+}
+
+.logo-accent {
+    color: var(--primary);
+}
+
+.country-tag {
+    font-size: 0.8rem;
+    background: #F1F5F9;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: 6px;
+    font-weight: 600;
+}
+
+.nav-trust {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.trust-stars {
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+/* Main Hero Section */
+.hero-section {
+    padding: 40px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+/* Left Hero Column */
+.geo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #EEF2FF;
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    margin-bottom: 16px;
+    border: 1px solid #C7D2FE;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(79, 70, 229, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+}
+
+.hero-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #0F172A;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.feature-icon {
+    font-size: 1.3rem;
+    background: #FFFFFF;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.feature-text {
+    font-size: 0.95rem;
+    color: #334155;
+    padding-top: 4px;
+}
+
+.trust-panel {
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.quote-body {
+    font-style: italic;
+    color: #334155;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.quote-author {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Right Funnel Card */
+.funnel-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-color);
+}
+
+.funnel-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #E2E8F0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-step.active .step-num {
+    background: var(--primary);
+    color: #FFFFFF;
+}
+
+.progress-step.completed .step-num {
+    background: var(--accent-green);
+    color: #FFFFFF;
+}
+
+.step-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.progress-connector {
+    flex: 1;
+    height: 2px;
+    background: #E2E8F0;
+    margin: 0 8px 14px 8px;
+}
+
+.progress-connector.active {
+    background: var(--primary);
+}
+
+/* Form Styles */
+.step-heading {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 4px;
+}
+
+.step-subheading {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1E293B;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #0F172A;
+    font-family: inherit;
+    transition: border-color 0.15s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.form-row {
+    display: flex;
+    gap: 12px;
+}
+
+.form-group.half {
+    flex: 1;
+}
+
+.phone-input-wrap {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #FFFFFF;
+}
+
+.phone-prefix {
+    padding: 10px 12px;
+    background: #F1F5F9;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #334155;
+    border-right: 1px solid var(--border-color);
+}
+
+.phone-input-wrap input {
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+.input-hint {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Recommendation Box */
+.recommendation-badge {
+    background: #F8FAFC;
+    border: 1.5px dashed #CBD5E1;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+}
+
+.preview-tag {
+    font-size: 0.65rem;
+    font-weight: 800;
+    background: #E0E7FF;
+    color: var(--primary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+}
+
+.preview-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #1E1B4B;
+    margin-top: 4px;
+}
+
+.preview-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Buttons */
+.btn-primary {
+    width: 100%;
+    background: var(--primary);
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: #F1F5F9;
+    color: #334155;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.step-btn-group {
+    display: flex;
+    gap: 12px;
+}
+
+.step-btn-group .btn-secondary {
+    flex: 0.3;
+}
+
+.step-btn-group .btn-primary {
+    flex: 0.7;
+}
+
+/* Slot Picker Grid */
+.slot-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 12px;
+    margin-bottom: 20px;
+}
+
+.slot-option {
+    border: 1.5px solid var(--border-color);
+    padding: 12px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.15s ease;
+}
+
+.slot-option:hover {
+    border-color: var(--primary);
+    background: #F8FAFC;
+}
+
+.slot-option.selected {
+    border-color: var(--primary);
+    background: #EEF2FF;
+}
+
+.slot-time {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #0F172A;
+}
+
+.slot-badge {
+    font-size: 0.75rem;
+    background: #DCFCE7;
+    color: #15803D;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 9999px;
+}
+
+/* Locked Card */
+.locked-card {
+    background: #F0FDF4;
+    border: 1.5px solid #86EFAC;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 16px;
+}
+
+.locked-badge {
+    display: inline-block;
+    background: #15803D;
+    color: #FFFFFF;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 2px 10px;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.locked-details {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #14532D;
+    margin-bottom: 16px;
+}
+
+.calendar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.btn-gcal {
+    background: #4285F4;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.btn-ics {
+    background: #FFFFFF;
+    color: #334155;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    display: inline-block;
+}
+
+/* SMS OTP Verification Box */
+.btn-send-otp {
+    background: #E0E7FF;
+    color: var(--primary);
+    border: 1px solid #C7D2FE;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 0 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.btn-send-otp:hover {
+    background: #C7D2FE;
+}
+
+.otp-verification-box {
+    background: #F8FAFC;
+    border: 1.5px dashed #6366F1;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 16px;
+}
+
+.otp-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.otp-icon {
+    font-size: 1.1rem;
+}
+
+.otp-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1E1B4B;
+}
+
+.otp-row {
+    display: flex;
+    gap: 8px;
+}
+
+.otp-code-input {
+    flex: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    text-align: center;
+    font-weight: 700;
+    padding: 8px;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+}
+
+.btn-verify-otp {
+    background: var(--primary);
+    color: #FFFFFF;
+    border: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-verify-otp:hover {
+    background: var(--primary-hover);
+}
+
+.otp-status-text {
+    font-size: 0.75rem;
+    color: #64748B;
+    margin-top: 6px;
+}
+
+/* TCPA Compliance Box */
+.tcpa-box {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+.tcpa-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.72rem;
+    color: #64748B;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.tcpa-label input {
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+/* Attendance Assurance & Reminder Cadence */
+.reminder-cadence-section {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px dashed #CBD5E1;
+    text-align: left;
+}
+
+.cadence-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #1E1B4B;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.cadence-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.cadence-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 10px 8px;
+    text-align: center;
+}
+
+.cadence-pill {
+    display: inline-block;
+    background: #EEF2FF;
+    color: var(--primary);
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+.cadence-channel {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 2px;
+}
+
+.cadence-text {
+    font-size: 0.68rem;
+    color: #64748B;
+    line-height: 1.3;
+}
+
+.reschedule-action {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.btn-reschedule {
+    background: none;
+    border: none;
+    color: #4F46E5;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.btn-reschedule:hover {
+    color: #3730A3;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Footer Trust Strip */
+.site-footer {
+    background: #FFFFFF;
+    border-top: 1px solid var(--border-color);
+    padding: 24px;
+    margin-top: 60px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 24px;
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
