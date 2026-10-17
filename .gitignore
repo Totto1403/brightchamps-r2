@@ -1,9 +1,47 @@
+# Python & Environments
 __pycache__/
 *.py[cod]
 *$py.class
+.venv/
+venv/
+env/
+
+# Submission Email & Internal Comms (Keep Private)
+deliverables/SUBMISSION_EMAIL.md
+*SUBMISSION_EMAIL*
+*submission_email*
+*submission_mail*
+*email_draft*
+
+# Internal Document Generation Scripts
+deliverables/generate_executive_deck.py
+deliverables/generate_executive_pdf.py
+generate_*.py
+
+# Study Notes & Candidate Prep Materials
+studyme*.md
+*study*
+*prep*
+notes/
+scratch/
+temp/
+tmp/
+
+# Logs & Environment Variables
 *.log
 .env
+.env.*
+*.local
+
+# OS & Office Lock Files
 .DS_Store
 Thumbs.db
+desktop.ini
 ~$*
 *.tmp
+*.bak
+*.swp
+
+# IDE Configurations
+.vscode/
+.idea/

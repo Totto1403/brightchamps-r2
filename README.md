@@ -136,8 +136,8 @@ BrightCHAMPS_USA_Q4_Expansion/
 │       └── styles.css                       # Responsive modern styling
 └── deliverables/                            # Final exported documents
     ├── BrightCHAMPS_USA_Q4_Strategy_Memo.pdf# Publication-grade Strategy Memo
-    ├── BrightCHAMPS_USA_Q4_Strategy_Deck.pdf# 10-slide Executive Presentation Deck
-    ├── generate_executive_pdf.py            # PDF generator for memo
-    ├── generate_executive_deck.py           # PowerPoint & PDF generator for deck
-    └── SUBMISSION_EMAIL.md                  # Executive email to Yatharth Sahoo
+    ├── BrightCHAMPS_USA_Q4_Strategy_Deck.pdf# 11-slide Executive Presentation Deck
+    ├── BrightCHAMPS_USA_Q4_Strategy_Memo.docx# Editable Strategy Memo (Word)
+    ├── BrightCHAMPS_USA_Q4_Strategy_Deck.pptx# Editable Slide Deck (PowerPoint)
+    └── Bharanee_BrightCHAMPS_USA_Q4_Expansion.zip # Complete Archive
 ```
