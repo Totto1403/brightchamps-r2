@@ -92,11 +92,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (voucherActive) {
             if (voucherAnnouncePill) voucherAnnouncePill.style.display = "inline";
             if (voucherStep2Text) voucherStep2Text.style.display = "inline";
-            if (voucherToggleBadge) voucherToggleBadge.textContent = "[A/B Test: Voucher ON]";
+            if (voucherToggleBadge) voucherToggleBadge.textContent = "[A/B: Voucher ON]";
         } else {
             if (voucherAnnouncePill) voucherAnnouncePill.style.display = "none";
             if (voucherStep2Text) voucherStep2Text.style.display = "none";
-            if (voucherToggleBadge) voucherToggleBadge.textContent = "[A/B Test: Voucher OFF (Control)]";
+            if (voucherToggleBadge) voucherToggleBadge.textContent = "[A/B: Voucher OFF]";
         }
     }
     applyVoucherState();
