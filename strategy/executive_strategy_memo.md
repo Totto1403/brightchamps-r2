@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Executive Summary & One-Page Strategy Canvas
+## 1. Executive Summary & Growth Strategy Canvas
 
 ### The Mandate & Strategic Recommendation
 BrightCHAMPS has mandated an inbound growth plan for the United States to generate **5,500 qualified leads across November (2,500) and December (3,000) at a strict blended Cost Per Lead (CPL) of $30.00 USD ("at the right cost")** while maintaining lead quality.
@@ -102,6 +102,8 @@ To prevent ad-set cannibalization, targeting is grouped into three mutually excl
 | **Tier ROAS** | **2.85x** | **2.12x** | **1.40x** | **2.24x Blended** |
 
 *Calibration Note*: Round 1 US data contains no zip code or income fields, and all US leads share one timezone. Therefore, tier conversion rates and ARPUs are explicitly labeled as **hypotheses** to be validated in the first-10-days test plan.
+
+*Tier 3 Contribution Trade-Off & Reallocation Lever*: Tier 3 is contribution-negative on our model (1.40x ROAS vs 1.82x break-even, -$7,617.50 contribution loss at 55% GM); it is in the portfolio specifically to hold the $30 blended CPL ceiling ($29.85 blended). Dropping Tier 3 entirely lifts blended CPL across Tiers 1 and 2 to **$31.80** ($131,175 spend / 4,125 leads), but immediately increases total contribution by **+$7,617.50** (Tier 1 & 2 blended ROAS is 2.45x). Trimming Tier 3 represents our primary operational reallocation lever if contribution profit takes precedence over the strict $30 CPL ceiling.
 
 ### 3.4 Q4 Seasonality & Monthly Pacing
 * **November Pacing**: 2,500 qualified leads @ $30.80 CPL = $77,000 media spend. Captures early November parent intent before Thanksgiving; incorporates a **50% spend pause Nov 24–27** to avoid peak retail CPM competition.
