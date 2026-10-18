@@ -117,6 +117,7 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 24px;
+            margin-bottom: 24px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
         .card-title {
@@ -160,7 +161,7 @@
         /* Metrics Grid */
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 12px;
             margin-top: 20px;
         }
@@ -176,7 +177,7 @@
             border: 1px solid #C7D2FE;
         }
         .metric-val {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 800;
             font-family: 'JetBrains Mono', monospace;
             color: var(--navy);
@@ -219,6 +220,23 @@
             border-radius: 4px;
             color: #334155;
         }
+        /* Tables */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            margin-top: 10px;
+        }
+        .custom-table th, .custom-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .custom-table th {
+            background: #F1F5F9;
+            color: #334155;
+            font-weight: 700;
+        }
         /* CAPI Console */
         pre.json-box {
             background: #0F172A;
@@ -240,72 +258,51 @@
             padding: 8px 14px;
             border-radius: 6px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: background 0.2s;
         }
         .btn-action:hover {
             background: var(--primary-hover);
-        }
-        /* Section Tables */
-        table.custom-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.82rem;
-            margin-top: 10px;
-        }
-        table.custom-table th {
-            background: var(--navy);
-            color: #FFFFFF;
-            text-align: left;
-            padding: 8px 12px;
-            font-weight: 700;
-        }
-        table.custom-table td {
-            padding: 8px 12px;
-            border-bottom: 1px solid var(--border);
-        }
-        table.custom-table tr:nth-child(even) {
-            background: #F8FAFC;
-        }
-        @media (max-width: 900px) {
-            .hub-grid { grid-template-columns: 1fr; }
-            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- Header Navigation Bar -->
     <header class="hub-header">
         <div class="header-brand">
-            Bright<span class="logo-accent">CHAMPS</span> USA <span class="header-badge">FOUNDER'S STRATEGY HUB</span>
+            <span>Bright<span class="logo-accent">CHAMPS</span></span>
+            <span class="header-badge">FOUNDER'S OFFICE STRATEGY HUB</span>
         </div>
         <nav class="nav-links">
-            <a href="index.html" class="btn-live-landing">🌐 Test Live Landing Page →</a>
-            <a href="#simulator" class="active">📊 Model Simulator</a>
-            <a href="#capi">⚡ Meta CAPI Console</a>
-            <a href="#deliverables">📂 Downloads</a>
+            <a href="#simulator" class="active">Model Simulator</a>
+            <a href="#sensitivity">Sensitivity & Break-Evens</a>
+            <a href="#bridge">Qualified Bridge</a>
+            <a href="#capi">Meta CAPI v21.0</a>
+            <a href="#deliverables">Deliverables</a>
+            <a href="index.html" target="_blank" class="btn-live-landing">Open Live Landing Page ↗</a>
         </nav>
     </header>
 
     <main class="hub-container">
 
         <!-- Executive Mandate Banner -->
-        <div class="banner-mandate">
-            <div class="banner-title">📌 Executive Mandate & Single Source of Truth Overview</div>
+        <section class="banner-mandate">
+            <div class="banner-title">Mandate Overview: Inbound USA Growth (Nov–Dec 2026)</div>
             <div class="banner-desc">
-                <strong>Mandate for Yatharth Sahoo (Senior Lead, Founder's Office):</strong> Deliver <strong>5,500 qualified leads in Q4 (2,500 Nov | 3,000 Dec) at a strict blended CPL of $29.85 USD</strong> ($164,175 spend under $165k ceiling), generating <strong>$367,550.00 Net Booked Revenue</strong> and <strong>$37,977.50 Contribution Margin</strong> at a <strong>2.24x ROAS</strong> (comfortably exceeding our 1.82x break-even threshold at 55% gross margin).
+                <strong>Target:</strong> 5,500 Qualified Leads (Nov: 2,500 | Dec: 3,000) at <strong>$29.85 Blended CPL</strong> (Budget: $165,000 | Projected: $164,175).<br>
+                <strong>Architecture:</strong> Dual-Pillar Strategy combining 3-Tier Mutually Exclusive Geo Matrix with Server-Side Meta CAPI v21.0 and Dynamic Intake Funnel.
             </div>
-        </div>
+        </section>
 
         <div class="hub-grid">
             <!-- Left: Reactive Financial Simulator (Pure Client-Side Math) -->
-            <div class="card" id="simulator">
-                <div class="card-title">🎛️ Live Unit Economics & Sensitivity Simulator</div>
-                <div class="card-sub">Drag sliders to test macro stress conditions, CPM shifts, or show-rate variance in real time:</div>
+            <div class="card" id="simulator" style="margin-bottom: 0;">
+                <div class="card-title">Live Unit Economics Simulator</div>
+                <div class="card-sub">Test macro stress conditions, CPM shifts, or show-rate variance in real time:</div>
 
                 <div class="slider-group">
                     <div class="slider-label">
-                        <span>Total Inbound Leads (Nov–Dec Mandate)</span>
+                        <span>Total Qualified Leads (Mandate Target)</span>
                         <span class="val" id="val-leads">5,500 Leads</span>
                     </div>
                     <input type="range" id="input-leads" min="3000" max="8000" step="250" value="5500">
@@ -347,11 +344,15 @@
                 <div class="metrics-grid">
                     <div class="metric-tile">
                         <div class="metric-val" id="out-cpl">$29.85</div>
-                        <div class="metric-lbl">Blended CPL (Target: $30)</div>
+                        <div class="metric-lbl">Blended CPL (Cap: $30)</div>
+                    </div>
+                    <div class="metric-tile">
+                        <div class="metric-val" id="out-cost-att">$62.12</div>
+                        <div class="metric-lbl">Cost / Attended Demo</div>
                     </div>
                     <div class="metric-tile">
                         <div class="metric-val" id="out-spend">$164,175</div>
-                        <div class="metric-lbl">Total Media Spend</div>
+                        <div class="metric-lbl">Media Spend ($165k Cap)</div>
                     </div>
                     <div class="metric-tile">
                         <div class="metric-val" id="out-paid">473</div>
@@ -363,42 +364,46 @@
                     </div>
                     <div class="metric-tile highlight">
                         <div class="metric-val" id="out-contrib">$37,978</div>
-                        <div class="metric-lbl">Contribution Margin</div>
+                        <div class="metric-lbl">Contribution (10.3%)</div>
                     </div>
                     <div class="metric-tile highlight">
                         <div class="metric-val" id="out-roas">2.24x</div>
-                        <div class="metric-lbl">First-Order ROAS (BE: 1.82x)</div>
+                        <div class="metric-lbl">Media ROAS (BE: 1.82x)</div>
+                    </div>
+                    <div class="metric-tile">
+                        <div class="metric-val" id="out-cac">$347.09</div>
+                        <div class="metric-lbl">Blended CAC</div>
                     </div>
                 </div>
             </div>
 
             <!-- Right: Downloads & Deliverables -->
-            <div class="card" id="deliverables">
-                <div class="card-title">📂 Final Deliverables & PDFs</div>
+            <div class="card" id="deliverables" style="margin-bottom: 0;">
+                <div class="card-title">Final Deliverables & PDFs</div>
                 <div class="card-sub">Publication-grade executive assets ready for 1-click download:</div>
 
                 <a href="deliverables/BrightCHAMPS_USA_Q4_Strategy_Deck.pdf" target="_blank" class="download-btn">
-                    <span>📊 Executive Strategy Deck</span>
+                    <span>Executive Strategy Deck</span>
                     <span class="download-tag">PDF (11 Slides)</span>
                 </a>
 
                 <a href="deliverables/BrightCHAMPS_USA_Q4_Strategy_Memo.pdf" target="_blank" class="download-btn">
-                    <span>📄 Comprehensive Strategy Memo</span>
+                    <span>Comprehensive Strategy Memo</span>
                     <span class="download-tag">PDF (Memo)</span>
                 </a>
 
                 <a href="deliverables/BrightCHAMPS_USA_Q4_Strategy_Deck.pptx" download class="download-btn">
-                    <span>📑 Editable Slide Deck</span>
+                    <span>Editable Slide Deck</span>
                     <span class="download-tag">PPTX</span>
                 </a>
 
                 <a href="deliverables/BrightCHAMPS_USA_Q4_Strategy_Memo.docx" download class="download-btn">
-                    <span>📝 Editable Strategy Memo</span>
+                    <span>Editable Strategy Memo</span>
                     <span class="download-tag">DOCX</span>
                 </a>
 
                 <a href="deliverables/Bharanee_BrightCHAMPS_USA_Q4_Expansion.zip" download class="download-btn">
-                    <span>📦 Full Project Archive</span>
+                    <span>Full Project Archive</span>
                     <span class="download-tag">ZIP Archive</span>
                 </a>
 
@@ -409,10 +414,130 @@
             </div>
         </div>
 
+        <!-- Section: Break-Even & Contribution Sensitivity Box -->
+        <div class="card" id="sensitivity">
+            <div class="card-title">Break-Even Thresholds & Contribution Sensitivity</div>
+            <div class="card-sub">Base contribution is $37,978 (10.3% of revenue). Key break-even parameters and headwind tests:</div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 16px;">
+                <div style="background: #F8FAFC; padding: 14px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
+                    <div style="font-size: 1.3rem; font-weight: 800; color: #DC2626; font-family: 'JetBrains Mono', monospace;">$36.76</div>
+                    <div style="font-size: 0.78rem; font-weight: 700; color: #334155; margin-top: 4px;">Break-Even CPL</div>
+                    <div style="font-size: 0.72rem; color: #64748B;">Max blended CPL before contribution turns negative</div>
+                </div>
+                <div style="background: #F8FAFC; padding: 14px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
+                    <div style="font-size: 1.3rem; font-weight: 800; color: #DC2626; font-family: 'JetBrains Mono', monospace;">44.7%</div>
+                    <div style="font-size: 0.78rem; font-weight: 700; color: #334155; margin-top: 4px;">Break-Even Gross Margin</div>
+                    <div style="font-size: 0.72rem; color: #64748B;">Floor GM required to cover $164k media spend</div>
+                </div>
+                <div style="background: #F8FAFC; padding: 14px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
+                    <div style="font-size: 1.3rem; font-weight: 800; color: #DC2626; font-family: 'JetBrains Mono', monospace;">14.5%</div>
+                    <div style="font-size: 0.78rem; font-weight: 700; color: #334155; margin-top: 4px;">Break-Even Close Rate</div>
+                    <div style="font-size: 0.72rem; color: #64748B;">Minimum demo-to-paid close rate required</div>
+                </div>
+            </div>
+
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Stress Scenario</th>
+                        <th>Operating Condition</th>
+                        <th>Media Spend</th>
+                        <th>Contribution Margin</th>
+                        <th>Impact / Strategic Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CPL Inflation</strong></td>
+                        <td>Blended CPL rises to $34.00 (+14%)</td>
+                        <td>$187,000</td>
+                        <td style="color: #15803D; font-weight: 700;">+$15,153</td>
+                        <td>Absorbed by volume buffer; $15k positive margin preserved</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CPL Stress</strong></td>
+                        <td>Blended CPL rises to $36.00 (+21%)</td>
+                        <td>$198,000</td>
+                        <td style="color: #15803D; font-weight: 700;">+$4,153</td>
+                        <td>Near break-even; reallocate 50% budget to Tier 2/3 and referral loop</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Round 1 Show Rate</strong></td>
+                        <td>Show rate drops to R1 actual (64.8%)</td>
+                        <td>$164,175</td>
+                        <td style="color: #15803D; font-weight: 700;">+$20,386</td>
+                        <td>Volume absorbs decline; +$20k contribution maintained</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Combined Headwind</strong></td>
+                        <td>CPL $34.00 + Show Rate 64.8%</td>
+                        <td>$187,000</td>
+                        <td style="color: #DC2626; font-weight: 700;">-$2,439</td>
+                        <td>Triggers Day-10 kill criteria; enforce OTP & counselor call gate</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Q4 CPM Surge</strong></td>
+                        <td>CPL $41.79 (+40% CPM spike)</td>
+                        <td>$229,845</td>
+                        <td style="color: #DC2626; font-weight: 700;">-$27,693</td>
+                        <td>Enact Thanksgiving 50% spend pause; shift to referral & Advantage+</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section: Raw-to-Qualified Bridge & Benchmarks -->
+        <div class="card" id="bridge">
+            <div class="card-title">Raw-to-Qualified Lead Bridge & Industry Benchmarks</div>
+            <div class="card-sub">
+                <strong>Qualified Lead Definition:</strong> OTP-verified US mobile + valid parent email + self-reported laptop/desktop access.
+            </div>
+
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Qualification Pass Rate</th>
+                        <th>Raw Leads Needed</th>
+                        <th>Target Qualified Leads</th>
+                        <th>Max Allowable Raw CPL</th>
+                        <th>Qualified CPL Ceiling</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>90.0% Pass Rate</strong></td>
+                        <td>6,111 Raw Leads</td>
+                        <td>5,500 Qualified Leads</td>
+                        <td><strong>$26.87 Raw CPL</strong></td>
+                        <td>$29.85 Qualified CPL</td>
+                    </tr>
+                    <tr style="background: var(--light-indigo); font-weight: 700;">
+                        <td><strong>80.0% Pass Rate (Base Model)</strong></td>
+                        <td>6,875 Raw Leads</td>
+                        <td>5,500 Qualified Leads</td>
+                        <td><strong>$23.88 Raw CPL</strong></td>
+                        <td>$29.85 Qualified CPL</td>
+                    </tr>
+                    <tr>
+                        <td><strong>70.0% Pass Rate</strong></td>
+                        <td>7,857 Raw Leads</td>
+                        <td>5,500 Qualified Leads</td>
+                        <td><strong>$20.90 Raw CPL</strong></td>
+                        <td>$29.85 Qualified CPL</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="margin-top: 14px; padding: 12px; background: #F8FAFC; border: 1px solid var(--border); border-radius: 8px; font-size: 0.78rem; color: #475569;">
+                <strong>US Education Meta CPL Benchmarks:</strong> Average US education lead CPL runs at $22.83 (Superads benchmark) to $34.85 (Focus Digital North America high). Higher-friction lead formats cost more (lead forms $34.10 vs Instant Experience $49.70). Our $23.88 raw CPL requirement aligns comfortably with mid-tier benchmark averages and will be the first metric validated during Days 1–3.
+            </div>
+        </div>
+
         <!-- Meta CAPI Console with Browser Native SHA-256 Hashing -->
-        <div class="card" id="capi" style="margin-bottom: 28px;">
-            <div class="card-title">⚡ Real-Time Meta CAPI & Monotonic Expected Value Console</div>
-            <div class="card-sub">Test live event valuation P(Paid | Stage) x ARPU and SHA-256 hashed privacy compliance in real-time:</div>
+        <div class="card" id="capi">
+            <div class="card-title">Real-Time Meta Conversions API (CAPI v21.0) Console</div>
+            <div class="card-sub">Server-side monotonic valuation P(Paid | Stage) x ARPU and SHA-256 parent hashing:</div>
 
             <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px;">
                 <button class="btn-action" onclick="triggerCapi('Lead')">1. Dispatch Lead Event ($66.83)</button>
@@ -421,12 +546,12 @@
                 <button class="btn-action" style="background: #F59E0B;" onclick="triggerCapi('Purchase')">4. Dispatch Purchase Event ($777.06) [STRIPE]</button>
             </div>
 
-            <pre class="json-box" id="capi-output">// Click any button above to generate a live Meta Conversions API (CAPI v19.0) payload with real-time SHA-256 parent hashing...</pre>
+            <pre class="json-box" id="capi-output">// Click any button above to generate a live Meta Conversions API (CAPI v21.0) payload with real-time SHA-256 parent hashing...</pre>
         </div>
 
         <!-- Timezone Demo Capacity & Roster -->
         <div class="card">
-            <div class="card-title">⏰ Operational Demo Capacity by US Timezone</div>
+            <div class="card-title">Operational Demo Capacity & Peak-Load Planning</div>
             <div class="card-sub">3,723 scheduled demos across 60 days = ~62 live 45-minute sessions daily:</div>
 
             <table class="custom-table">
@@ -461,15 +586,26 @@
                         <td>4:30 PM - 8:30 PM PST</td>
                         <td>4 Mentors</td>
                     </tr>
-                    <tr style="background: var(--light-indigo); font-weight: 700;">
-                        <td>TOTAL DEDICATED POD</td>
+                    <tr style="background: #F1F5F9; font-weight: 700;">
+                        <td>BASE EVENING POD</td>
                         <td>100%</td>
                         <td>62 Demos / Day</td>
-                        <td>After-School Evenings</td>
-                        <td>16 Dedicated US Mentors</td>
+                        <td>46.5 demo-hours needed</td>
+                        <td>16 Mentors (64 mentor-hours | 73% utilization)</td>
+                    </tr>
+                    <tr style="background: #FEF3C7; font-weight: 700; color: #92400E;">
+                        <td>PEAK LOAD (1.6x Surge)</td>
+                        <td>Weekend / Peak After-School</td>
+                        <td>~99 Demos / Peak Day</td>
+                        <td>74.4 demo-hours needed</td>
+                        <td>Exceeds 100% utilization -> Mitigated by weekend daytime blocks & flex pool</td>
                     </tr>
                 </tbody>
             </table>
+
+            <div style="margin-top: 14px; padding: 12px; background: #F8FAFC; border: 1px solid var(--border); border-radius: 8px; font-size: 0.78rem; color: #475569;">
+                <strong>Peak Mitigation Plan:</strong> To handle the 1.6x weekend and evening surge without burning educators, we open Saturday/Sunday daytime blocks (10 AM - 3 PM) and maintain an on-call pool of 6 part-time flex mentors managed by the US Shift Lead.
+            </div>
         </div>
 
     </main>
@@ -530,13 +666,17 @@
             const netRevenue = (paidT1 * arpuT1) + (paidT2 * arpuT2) + (paidT3 * arpuT3);
             const contrib = (netRevenue * grossMargin) - spend;
             const roas = spend > 0 ? (netRevenue / spend) : 0;
+            const costPerAttended = totalJoined > 0 ? (spend / totalJoined) : 0;
+            const cac = totalPaid > 0 ? (spend / totalPaid) : 0;
 
             document.getElementById('out-cpl').textContent = '$' + blendedCpl.toFixed(2);
+            document.getElementById('out-cost-att').textContent = '$' + costPerAttended.toFixed(2);
             document.getElementById('out-spend').textContent = '$' + Math.round(spend).toLocaleString();
             document.getElementById('out-paid').textContent = totalPaid;
             document.getElementById('out-rev').textContent = '$' + Math.round(netRevenue).toLocaleString();
             document.getElementById('out-contrib').textContent = (contrib >= 0 ? '+$' : '-$') + Math.abs(Math.round(contrib)).toLocaleString();
             document.getElementById('out-roas').textContent = roas.toFixed(2) + 'x';
+            document.getElementById('out-cac').textContent = '$' + cac.toFixed(2);
         }
 
         [inLeads, inCplT1, inShow, inClose, inMargin].forEach(el => el.addEventListener('input', updateModel));
@@ -596,6 +736,8 @@
                     "optimization_role": eventName === "Schedule" ? "PRIMARY_CAMPAIGN_OPTIMIZATION" : "VALUE_SIGNAL_FEEDBACK"
                 },
                 "compliance_notes": {
+                    "API_version": "v21.0",
+                    "dispatch_mode": "PER_EVENT_WEBHOOK_IMMEDIATE",
                     "COPPA_status": "COMPLIANT_ZERO_MINOR_DATA_TRANSMITTED",
                     "TCPA_consent_verified": true,
                     "monotonic_condition": "Lead ($66.83) < Schedule ($98.72) < DemoAttended ($139.07) < Purchase ($777.06)"
@@ -607,4 +749,3 @@
     </script>
 </body>
 </html>
-

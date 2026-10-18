@@ -5,24 +5,28 @@ Author: Bharanee B (AI Associate, Founder's Office)
 Stakeholder: Yatharth Sahoo (Senior Lead, Founder's Office)
 
 Description:
-Dispatches server-side conversion events to Meta Conversions API (v19.0).
+Dispatches server-side conversion events to Meta Conversions API (Graph API v21.0).
 Enables Value-Based Bidding (VBB) by feeding offline demo attendance and paid enrollment
 expected values back to Meta's machine learning algorithms.
 
 Key Architecture & Compliance Decisions:
 1. Recalibrated Monotonic Event Values:
    Values represent mathematically expected downstream revenue P(Paid | Stage) x ARPU.
-   Values strictly ascend down the funnel: Lead < Schedule < DemoAttended < Purchase.
+   Values strictly ascend down the funnel: Lead ($66.83) < Schedule ($98.72) < DemoAttended ($139.07) < Purchase ($777.06).
    Tier-specific and blended calculations derived directly from unit_economics_financial_model.py.
-2. Compliance & Privacy (COPPA & Meta Minor Safety Policy):
+2. Real-Time Webhook Dispatch (Per-Event, Never Batch Backlog):
+   Meta accepts event_time up to 7 days in the past and rejects the entire batch if any event is older.
+   Events are dispatched immediately per event via webhooks (landing page form, Zoom join, Stripe charge).
+3. Compliance & Privacy (COPPA & Meta Minor Safety Policy):
    Child name and age are NEVER transmitted to Meta. Only SHA-256 hashed parent contact
    identifiers (email, phone, name, city/state, zip) are sent.
-3. Campaign Optimization Configuration:
+4. Campaign Optimization Configuration:
    Default optimization event is 'Schedule' (generating ~3,723 events or ~108/week/ad-set,
    comfortably exceeding Meta's 50 conversions/week learning phase exit requirement).
-   'Purchase' (~470 total events across 60 days) is too sparse for primary delivery optimization
-   and is instead sent alongside 'DemoAttended' as value signals for Target ROAS / VBB.
-4. Browser & Server Deduplication:
+   'Purchase' (~470 total events across 60 days) is too sparse for primary delivery optimization.
+   Optimizing directly for deep funnel events (VBB) typically elevates CPL; thus, 'Schedule' is the primary
+   delivery optimization target, while 'DemoAttended' and 'Purchase' stream as offline value signals for Target ROAS.
+5. Browser & Server Deduplication:
    Uses deterministic event_id paired with _fbp, _fbc/fbclid, client IP, and User-Agent.
 """
 
@@ -72,7 +76,7 @@ STAGE_EXPECTED_VALUES = {
 }
 
 class MetaCAPIDispatcher:
-    """Server-side event pipeline for Meta Conversions API (CAPI v19.0)."""
+    """Server-side event pipeline for Meta Conversions API (CAPI v21.0)."""
 
     def __init__(
         self,
@@ -251,7 +255,7 @@ class MetaCAPIDispatcher:
         user_agent: str = "Mozilla/5.0",
         action_source: str = "website"
     ) -> Dict[str, Any]:
-        """Formats and transmits the deduplicated event payload to Meta Graph API."""
+        """Formats and transmits the deduplicated event payload to Meta Graph API v21.0."""
         event_time = int(time.time())
         # Deterministic event_id shared between browser pixel and server CAPI for 100% deduplication
         event_id = f"bc_{lead_id}_{event_name.lower()}_{event_time}"
@@ -289,7 +293,7 @@ class MetaCAPIDispatcher:
                 "fbtrace_id": f"mock_trace_{uuid.uuid4().hex[:12]}"
             }
         else:
-            # In live production, this posts to https://graph.facebook.com/v19.0/{pixel_id}/events
+            # In live production, this posts to https://graph.facebook.com/v21.0/{pixel_id}/events
             return {"status": "LIVE_DISPATCH_NOT_CONFIGURED", "event_id": event_id}
 
 # ==============================================================================

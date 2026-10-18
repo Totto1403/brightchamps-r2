@@ -40,24 +40,24 @@ document.addEventListener("DOMContentLoaded", function () {
             badge: "Personalized for Silicon Valley, Seattle & Austin Tech Families",
             headline: "Turn Passive Screen Time Into <span class='gradient-text'>Real AI & Coding Superpowers.</span>",
             subtext: "Silicon Valley curriculum for ages 6–16. Watch your child build machine learning models, autonomous bots, and real Python algorithms with 1-on-1 elite mentors.",
-            quote: "\"My 10-year-old was obsessed with Roblox. Within 3 weeks of BrightCHAMPS, he was writing real Python scripts to build his own games. Worth every penny.\"",
-            author: "— Anita S., Software Engineering Director • Sunnyvale, CA",
+            quote: "\"[PLACEHOLDER: BrightCHAMPS to supply verified parent testimonial for Tech & Diaspora Metros]\"",
+            author: "[PLACEHOLDER: Verified Parent, Tech Lead • Bay Area, CA]",
             defaultState: "CA"
         },
         suburban: {
             badge: "Top-Rated 1-on-1 STEM Enrichment for Competitive Academic Corridors",
             headline: "Give Your Child the <span class='gradient-text'>Competitive STEM & Logic Edge.</span>",
             subtext: "The modern alternative to commute-heavy learning centers. Personalized 1-on-1 coding, AI, and math logic from top educators—from the comfort of home.",
-            quote: "\"We used to spend 45 minutes driving to a coding franchise twice a week. BrightCHAMPS 1-on-1 format is 10x better quality, personalized, and saves our family hours.\"",
-            author: "— Dr. Marcus V., Cardiologist & Parent • Frisco, TX",
+            quote: "\"[PLACEHOLDER: BrightCHAMPS to supply verified parent testimonial for Suburban Corridors]\"",
+            author: "[PLACEHOLDER: Verified Parent • Frisco, TX]",
             defaultState: "TX"
         },
         heartland: {
             badge: "World-Class 1-on-1 STEM Mentors Available Across All 50 States",
             headline: "Bring Silicon Valley Tech Mentors <span class='gradient-text'>Right to Your Living Room.</span>",
             subtext: "Affordable, engaging, and flexible 1-on-1 coding classes for ages 6–16. Claim your complimentary trial class and Q4 winter holiday scholarship voucher.",
-            quote: "\"There are no robotics or coding clubs near our small town. BrightCHAMPS gave my daughter access to incredible mentors who inspire her every single week.\"",
-            author: "— Sarah T., Educator & Homeschool Parent • Carmel, IN",
+            quote: "\"[PLACEHOLDER: BrightCHAMPS to supply verified parent testimonial for Heartland America]\"",
+            author: "[PLACEHOLDER: Verified Parent • Carmel, IN]",
             defaultState: "IN"
         }
     };
@@ -76,7 +76,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // -------------------------------------------------------------------------
-    // 2. DYNAMIC CURRICULUM RECOMMENDATION ENGINE (Step 1)
+    // 2. VOUCHER A/B TEST CONTROLLER ($150 Voucher ON vs. Premium Control OFF)
+    // -------------------------------------------------------------------------
+    let voucherActive = true;
+    const paramVoucher = urlParams.get("voucher");
+    if (paramVoucher === "0" || paramVoucher === "false" || paramVoucher === "off") {
+        voucherActive = false;
+    }
+
+    const voucherToggleBadge = document.getElementById("voucher-toggle-badge");
+    const voucherAnnouncePill = document.getElementById("voucher-announcement-pill");
+    const voucherStep2Text = document.getElementById("voucher-step2-text");
+
+    function applyVoucherState() {
+        if (voucherActive) {
+            if (voucherAnnouncePill) voucherAnnouncePill.style.display = "inline";
+            if (voucherStep2Text) voucherStep2Text.style.display = "inline";
+            if (voucherToggleBadge) voucherToggleBadge.textContent = "[A/B Test: Voucher ON]";
+        } else {
+            if (voucherAnnouncePill) voucherAnnouncePill.style.display = "none";
+            if (voucherStep2Text) voucherStep2Text.style.display = "none";
+            if (voucherToggleBadge) voucherToggleBadge.textContent = "[A/B Test: Voucher OFF (Control)]";
+        }
+    }
+    applyVoucherState();
+
+    if (voucherToggleBadge) {
+        voucherToggleBadge.addEventListener("click", function () {
+            voucherActive = !voucherActive;
+            applyVoucherState();
+        });
+    }
+
+    // -------------------------------------------------------------------------
+    // 3. DYNAMIC CURRICULUM RECOMMENDATION ENGINE (Step 1)
     // -------------------------------------------------------------------------
     const childAgeEl = document.getElementById("child-age");
     const codingExpEl = document.getElementById("coding-experience");
@@ -110,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
     learningGoalEl.addEventListener("change", updateMatchedTrack);
 
     // -------------------------------------------------------------------------
-    // 3. STEP PROGRESSION LOGIC
+    // 4. STEP PROGRESSION LOGIC
     // -------------------------------------------------------------------------
     const step1Content = document.getElementById("step-1-content");
     const step2Content = document.getElementById("step-2-content");
@@ -133,6 +166,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!childName) {
             alert("Please enter your child's first name to customize their project.");
             document.getElementById("child-name").focus();
+            return;
+        }
+
+        const guardianAttest = document.getElementById("guardian-attest");
+        if (guardianAttest && !guardianAttest.checked) {
+            alert("Please confirm you are the parent or legal guardian to proceed.");
             return;
         }
 
@@ -164,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // -------------------------------------------------------------------------
-    // 4. MOCK SMS OTP VERIFICATION (Twilio Verify Architecture)
+    // 5. MOCK SMS OTP VERIFICATION (Twilio Verify Architecture)
     // -------------------------------------------------------------------------
     const btnSendOtp = document.getElementById("btn-send-otp");
     const otpContainer = document.getElementById("otp-container");
@@ -184,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
         otpContainer.classList.remove("hidden");
         otpInput.value = "123456"; // Auto-fill mock verification code
         btnSendOtp.textContent = "Resend SMS";
-        otpStatusMsg.innerHTML = "✅ SMS Code sent! Twilio Sandbox: Verification code <strong>123456</strong> ready.";
+        otpStatusMsg.innerHTML = "SMS Code sent. Sandbox verification code is <strong>123456</strong>";
         otpStatusMsg.style.color = "#16A34A";
     });
 
@@ -192,9 +231,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const code = otpInput.value.trim();
         if (code === leadData.mock_otp || code.length === 6) {
             leadData.is_phone_verified = true;
-            otpStatusMsg.innerHTML = "✓ Phone number verified successfully (+1 " + phoneInput.value + ")";
+            otpStatusMsg.innerHTML = "Phone verified successfully (+1 " + phoneInput.value + ")";
             otpStatusMsg.style.color = "#15803D";
-            btnVerifyOtp.textContent = "Verified ✓";
+            btnVerifyOtp.textContent = "Verified";
             btnVerifyOtp.style.background = "#15803D";
             btnSendOtp.style.display = "none";
         } else {
@@ -203,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // -------------------------------------------------------------------------
-    // 5. STEP 2 SUBMIT & TCPA VALIDATION
+    // 6. STEP 2 SUBMIT & TCPA VALIDATION
     // -------------------------------------------------------------------------
     document.getElementById("btn-submit-lead").addEventListener("click", function () {
         const pfName = document.getElementById("parent-fname").value.trim();
@@ -249,42 +288,83 @@ document.addEventListener("DOMContentLoaded", function () {
         conn2.classList.add("active");
         tab3.classList.add("active");
 
+        const childDisplayName = leadData.child_name || "Your Child";
         document.getElementById("confirmation-header").textContent = 
-            `Class Pass Confirmed for ${leadData.child_name}!`;
+            `Class Pass Confirmed for ${childDisplayName}!`;
 
         renderAvailableSlots();
     });
 
     // -------------------------------------------------------------------------
-    // 6. INSTANT DEMO SLOT PICKER & GOOGLE CALENDAR SYNC (Step 3)
+    // 7. INSTANT DEMO SLOT PICKER & GOOGLE CALENDAR SYNC (Step 3)
     // -------------------------------------------------------------------------
+    let showWeekendSlots = false;
+
+    const toggleWeekendBtn = document.getElementById("btn-toggle-weekend");
+    if (toggleWeekendBtn) {
+        toggleWeekendBtn.addEventListener("click", function () {
+            showWeekendSlots = !showWeekendSlots;
+            toggleWeekendBtn.textContent = showWeekendSlots ? "← Back to 48-Hour Slots" : "See Weekend Slots →";
+            renderAvailableSlots();
+        });
+    }
+
     function renderAvailableSlots() {
         const container = document.getElementById("slots-container");
         container.innerHTML = "";
 
         const now = new Date();
-        const tomorrow = new Date(now);
-        tomorrow.setDate(now.getDate() + 1);
-        const dayAfter = new Date(now);
-        dayAfter.setDate(now.getDate() + 2);
+        let options = [];
 
-        const options = [
-            {
-                label: `Tomorrow (${tomorrow.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}) at 5:00 PM EST`,
-                startDt: new Date(tomorrow.setHours(17, 0, 0, 0)),
-                badge: "MOST POPULAR"
-            },
-            {
-                label: `Tomorrow (${tomorrow.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}) at 7:00 PM EST`,
-                startDt: new Date(tomorrow.setHours(19, 0, 0, 0)),
-                badge: "EVENING SLOT"
-            },
-            {
-                label: `${dayAfter.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} at 11:00 AM EST`,
-                startDt: new Date(dayAfter.setHours(11, 0, 0, 0)),
-                badge: "WEEKEND MORNING"
-            }
-        ];
+        if (!showWeekendSlots) {
+            // Standard <=48h recommendation
+            const tomorrow = new Date(now);
+            tomorrow.setDate(now.getDate() + 1);
+            const dayAfter = new Date(now);
+            dayAfter.setDate(now.getDate() + 2);
+
+            options = [
+                {
+                    label: `Tomorrow (${tomorrow.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}) at 5:00 PM EST`,
+                    startDt: new Date(tomorrow.setHours(17, 0, 0, 0)),
+                    badge: "RECOMMENDED (48H)"
+                },
+                {
+                    label: `Tomorrow (${tomorrow.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}) at 7:00 PM EST`,
+                    startDt: new Date(tomorrow.setHours(19, 0, 0, 0)),
+                    badge: "EVENING SLOT"
+                },
+                {
+                    label: `${dayAfter.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} at 6:00 PM EST`,
+                    startDt: new Date(dayAfter.setHours(18, 0, 0, 0)),
+                    badge: "POPULAR AFTER-SCHOOL"
+                }
+            ];
+        } else {
+            // Weekend daytime slots
+            const saturday = new Date(now);
+            saturday.setDate(now.getDate() + ((6 - now.getDay() + 7) % 7 || 7));
+            const sunday = new Date(saturday);
+            sunday.setDate(saturday.getDate() + 1);
+
+            options = [
+                {
+                    label: `Saturday (${saturday.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}) at 10:00 AM EST`,
+                    startDt: new Date(saturday.setHours(10, 0, 0, 0)),
+                    badge: "WEEKEND MORNING"
+                },
+                {
+                    label: `Saturday (${saturday.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}) at 2:00 PM EST`,
+                    startDt: new Date(saturday.setHours(14, 0, 0, 0)),
+                    badge: "WEEKEND AFTERNOON"
+                },
+                {
+                    label: `Sunday (${sunday.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}) at 11:30 AM EST`,
+                    startDt: new Date(sunday.setHours(11, 30, 0, 0)),
+                    badge: "WEEKEND PRIME"
+                }
+            ];
+        }
 
         options.forEach((opt, idx) => {
             const card = document.createElement("div");
@@ -313,9 +393,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const icsBtn = document.getElementById("btn-ics-link");
 
         lockedCard.classList.remove("hidden");
-        detailsEl.textContent = `${slot.label} with Senior STEM Mentor`;
+        detailsEl.textContent = `${slot.label} with Senior Dedicated Mentor`;
 
-        const child = leadData.child_name || "Child";
+        const child = leadData.child_name || "Your Child";
         const zoomLink = `https://brightchamps.zoom.us/j/${leadData.lead_id}`;
 
         const startIso = slot.startDt.toISOString().replace(/-|:|\.\d\d\d/g, "");

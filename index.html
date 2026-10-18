@@ -14,8 +14,9 @@
     <!-- Top Announcement Bar -->
     <aside class="announcement-bar" aria-label="Holiday campaign announcement">
         <div class="announcement-content">
-            <span class="badge-pill">Q4 HOLIDAY SPECIAL</span>
-            <span id="announcement-text">Winter Coding Headstart: Complimentary 1-on-1 AI Trial Class + $150 Tuition Grant</span>
+            <span class="badge-pill">Q4 SPECIAL</span>
+            <span id="announcement-text">Winter Coding Headstart: Complimentary 1-on-1 AI Trial Class <span id="voucher-announcement-pill">+ $150 Tuition Voucher</span></span>
+            <span id="voucher-toggle-badge" style="margin-left: 12px; font-size: 0.72rem; opacity: 0.85; cursor: pointer; text-decoration: underline;" title="Click to toggle voucher A/B test variant">[A/B Test: Voucher ON]</span>
         </div>
     </aside>
 
@@ -24,12 +25,11 @@
         <div class="nav-container">
             <div class="brand-logo">
                 <span class="logo-bold">Bright</span><span class="logo-accent">CHAMPS</span>
-                <span class="country-tag">USA 🇺🇸</span>
+                <span class="country-tag">USA</span>
             </div>
             <div class="nav-trust">
                 <span class="trust-stars">★★★★★</span>
-                <span class="trust-text">4.9/5 Rating by 30,000+ US Parents</span>
-                <a href="hub.html" style="background: #1E1B4B; color: #FFFFFF; font-size: 0.8rem; font-weight: 700; padding: 6px 14px; border-radius: 6px; text-decoration: none; margin-left: 16px;">Founder's Hub & Simulator →</a>
+                <span class="trust-text">[PLACEHOLDER: BrightCHAMPS to supply verified rating & parent volume]</span>
             </div>
         </div>
     </header>
@@ -75,12 +75,12 @@
                     </div>
                 </div>
 
-                <!-- Live Social Proof & Trust Badges -->
+                <!-- Verified Social Proof Placeholder -->
                 <div class="trust-panel">
                     <div class="parent-quotes" id="social-proof-quote">
-                        <p class="quote-body">"My 10-year-old was obsessed with Roblox. Within 3 weeks of BrightCHAMPS, he was writing real Python scripts to build his own mini-games. Worth every single penny."</p>
+                        <p class="quote-body">"[PLACEHOLDER: BrightCHAMPS to supply verified parent testimonial for US region]"</p>
                         <div class="quote-author">
-                            <strong>— Anita S., Software Engineering Lead</strong> • Sunnyvale, CA
+                            <strong>[PLACEHOLDER: Verified Parent Name, Role]</strong> • [City, State]
                         </div>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
 
                         <div class="form-group">
                             <label for="child-name">Child's First Name</label>
-                            <input type="text" id="child-name" placeholder="e.g. Aarav, Lucas, Maya" required>
+                            <input type="text" id="child-name" placeholder="Child's First Name" required>
                         </div>
 
                         <div class="form-row">
@@ -139,8 +139,8 @@
                             <div class="form-group half">
                                 <label for="has-laptop-access">Laptop/Desktop Access?</label>
                                 <select id="has-laptop-access" required>
-                                    <option value="YES" selected>Yes, Laptop or PC (Recommended)</option>
-                                    <option value="NO">No, Tablet/iPad Only</option>
+                                    <option value="YES" selected>Yes, Laptop or PC (Required)</option>
+                                    <option value="NO">No, Tablet/Mobile Only</option>
                                 </select>
                             </div>
                         </div>
@@ -165,6 +165,14 @@
                             </select>
                         </div>
 
+                        <!-- Guardian Attestation & Privacy -->
+                        <div class="form-group guardian-attest-box" style="margin-bottom: 16px;">
+                            <label style="font-size: 0.76rem; color: #64748B; display: flex; align-items: flex-start; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" id="guardian-attest" required checked style="margin-top: 2px;">
+                                <span>I attest that I am the parent or legal guardian of the child named above. We respect family privacy under COPPA. <a href="#privacy" style="color: #6366F1; text-decoration: underline;">Privacy Policy</a>.</span>
+                            </label>
+                        </div>
+
                         <!-- Dynamic Recommendation Box -->
                         <div class="recommendation-badge" id="curriculum-preview">
                             <span class="preview-tag">MATCHED CURRICULUM</span>
@@ -180,7 +188,7 @@
                     <!-- STEP 2: Parent Verification, Phone OTP & TCPA Gate -->
                     <div class="funnel-step-content hidden" id="step-2-content">
                         <h2 class="step-heading">Where Should We Send the Class Pass?</h2>
-                        <p class="step-subheading">Free 45-minute 1-on-1 trial class + $150 tuition voucher</p>
+                        <p class="step-subheading" id="step-2-subheading">Free 45-minute 1-on-1 trial class <span id="voucher-step2-text">+ $150 tuition voucher</span></p>
 
                         <div class="form-row">
                             <div class="form-group half">
@@ -266,12 +274,16 @@
                     <div class="funnel-step-content hidden" id="step-3-content">
                         <div class="success-banner">
                             <span class="check-icon">✓</span>
-                            <h2 class="step-heading" id="confirmation-header">Class Pass Confirmed for Aarav!</h2>
-                            <p class="step-subheading">Lock your live 1-on-1 demo slot now before counselor schedules fill up:</p>
+                            <h2 class="step-heading" id="confirmation-header">Class Pass Confirmed for <span id="confirmed-child-name">Your Child</span>!</h2>
+                            <p class="step-subheading">Lock your live 1-on-1 demo slot now before mentor schedules fill up:</p>
                         </div>
 
                         <div class="slot-picker-wrap">
-                            <label class="slot-label">Select Preferred 45-Min Trial Slot:</label>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                <label class="slot-label" style="margin-bottom: 0;">Recommended Slots (Within 48 Hours):</label>
+                                <button type="button" id="btn-toggle-weekend" style="background: none; border: none; color: #6366F1; font-size: 0.78rem; font-weight: 600; cursor: pointer; text-decoration: underline;">See Weekend Slots →</button>
+                            </div>
+                            <p style="font-size: 0.72rem; color: #64748B; margin-bottom: 12px;">Note: Demos scheduled within 24-48 hours show higher historical attendance (Round 1 correlation). Flexible slots also available.</p>
                             <div class="slot-grid" id="slots-container">
                                 <!-- Dynamically generated slots -->
                             </div>
@@ -280,7 +292,7 @@
                         <div class="locked-card hidden" id="locked-slot-card">
                             <div class="locked-badge">SLOT RESERVED & SYNCED</div>
                             <div class="locked-details" id="locked-details-text">
-                                Tomorrow, 5:00 PM PST with Senior Mentor
+                                Tomorrow, 5:00 PM with Dedicated 1-on-1 Mentor
                             </div>
                             <div class="calendar-actions">
                                 <a href="#" target="_blank" class="btn-gcal" id="btn-gcal-link">
@@ -293,21 +305,21 @@
 
                             <!-- Attendance Assurance & Multi-Channel Reminder Cadence -->
                             <div class="reminder-cadence-section">
-                                <h3 class="cadence-title">🔔 Attendance Assurance & Reminders</h3>
+                                <h3 class="cadence-title">Attendance Assurance & Reminders</h3>
                                 <div class="cadence-grid">
                                     <div class="cadence-card">
                                         <div class="cadence-pill">T-24 Hours</div>
-                                        <div class="cadence-channel">📧 Email</div>
+                                        <div class="cadence-channel">Email</div>
                                         <div class="cadence-text">Calendar invite + Student Prep Guide</div>
                                     </div>
                                     <div class="cadence-card">
                                         <div class="cadence-pill">T-2 Hours</div>
-                                        <div class="cadence-channel">📱 SMS</div>
+                                        <div class="cadence-channel">SMS</div>
                                         <div class="cadence-text">1-Click Zoom access + Mentor bio</div>
                                     </div>
                                     <div class="cadence-card">
                                         <div class="cadence-pill">T-15 Mins</div>
-                                        <div class="cadence-channel">💬 WhatsApp</div>
+                                        <div class="cadence-channel">WhatsApp</div>
                                         <div class="cadence-text">Live room open alert & check-in</div>
                                     </div>
                                 </div>
@@ -319,7 +331,7 @@
                             </div>
 
                             <p class="zoom-notice">
-                                Zoom link has been sent to your verified phone and email. Please join 5 mins early using a laptop.
+                                Zoom link has been sent to your verified phone and email. Please join 5 mins early using a laptop or desktop computer.
                             </p>
                         </div>
                     </div>
@@ -338,17 +350,20 @@
                 <span class="stat-label">Countries Globally</span>
             </div>
             <div class="trust-stat">
-                <span class="stat-number">100,000+</span>
-                <span class="stat-label">Classes Delivered</span>
+                <span class="stat-number">[VERIFIED]</span>
+                <span class="stat-label">[PLACEHOLDER: Classes Delivered]</span>
             </div>
             <div class="trust-stat">
                 <span class="stat-number">1-on-1</span>
                 <span class="stat-label">Live Dedicated Mentors</span>
             </div>
             <div class="trust-stat">
-                <span class="stat-number">Top 1%</span>
-                <span class="stat-label">Vetted STEM Educators</span>
+                <span class="stat-number">[VERIFIED]</span>
+                <span class="stat-label">[PLACEHOLDER: Educator Standard]</span>
             </div>
+        </div>
+        <div style="text-align: center; padding: 16px 0; font-size: 0.74rem; color: #94A3B8; border-top: 1px solid rgba(255,255,255,0.06);">
+            © 2026 BrightCHAMPS USA Inc. All Rights Reserved. • <a href="#privacy" style="color: #94A3B8; text-decoration: underline;">Privacy Policy</a> • <a href="#terms" style="color: #94A3B8; text-decoration: underline;">Terms of Service</a> • <a href="#coppa" style="color: #94A3B8; text-decoration: underline;">COPPA Children's Privacy Notice</a>
         </div>
     </footer>
 
